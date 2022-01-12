@@ -23,7 +23,6 @@ contract PetShop is ERC721, ERC721URIStorage, ERC721Burnable, Ownable, IERC721Re
     }
 
     function Buy(uint256 tokenId) payable public {
-        require(msg.value >= 100000000000000000, "You haven't provided correct amount");
         _transfer(address(this), msg.sender, tokenId);
     }
 
@@ -44,5 +43,10 @@ contract PetShop is ERC721, ERC721URIStorage, ERC721Burnable, Ownable, IERC721Re
 
     function onERC721Received(address , address , uint256 , bytes memory) external pure override returns (bytes4){
         return bytes4(keccak256("onERC721Received(address,address,uint256,bytes)"));
+    }
+
+    function totalSupply () public view returns(uint256)
+    {
+        return _tokenIdCounter.current();
     }
 }
