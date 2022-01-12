@@ -45,7 +45,7 @@ contract PetShop is ERC721, ERC721URIStorage, ERC721Burnable, Ownable, IERC721Re
         return bytes4(keccak256("onERC721Received(address,address,uint256,bytes)"));
     }
 
-    function totalSupply () public view returns(uint256)
+    function totalSupply() public view returns(uint256)
     {
         return _tokenIdCounter.current();
     }
